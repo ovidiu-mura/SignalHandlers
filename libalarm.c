@@ -9,6 +9,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <string.h>
+#include "alarm.h"
 
 long main_count = 0; // counter to be incremented inside main method
 int acount = 0; // counter to be incremented inside alarm handler
@@ -18,7 +19,8 @@ time_t t; // timer to measure the time between handler execution
 
 
 // ALARM Signal Handler
-void alarm_handler(int sig)
+void 
+alarm_handler(int sig)
 {
   signal(SIGALRM, SIG_IGN);  // set the ALARM signal to be ignored
   time(&t);
@@ -43,7 +45,8 @@ void alarm_handler(int sig)
 }
 
 
-int main(void)
+void 
+test_alarm(void)
 {
   main_count = 0;
   signal(SIGALRM, alarm_handler);
@@ -52,5 +55,4 @@ int main(void)
     main_count++;
   }
   printf("------ done ------\n");
-  return 0;
 }
