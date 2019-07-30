@@ -25,4 +25,10 @@ int		test_sigcont(void);
 //SIGSTOP
 int		test_sigtstp(void);
 
+//SIGUSR1, SIGUSR2
+int		test_userdefsignals(void);
+
+//SIGINT
+void	test_sigint(void);
+
 #endif

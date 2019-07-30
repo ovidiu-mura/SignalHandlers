@@ -74,7 +74,7 @@ int test_sigfpe(void) {
   sigfpe_val = setjmp(sigfpe_buf);
  
 	int val1 = 5, val2 = 0;
- 	int retval; 
+ 	int retval = 0; 
   // Trigger divide-by-zero signal
 	if (!sigfpe_flag) {
 		printf("executing: 5/0...\n"); 

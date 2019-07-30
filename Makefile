@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -g
+CFLAGS=-g
 BINS=libalarm.so libchild.so libxfsz.so libfpe.so libpipe.so libsegv.so libstop.so libcont.so
 
 all: suite
@@ -8,8 +8,8 @@ sep: $(BINS)
 
 suite: suite.so
 
-suite.so: libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c libstop.c libcont.c
-	$(CC) $(CFLAGS) -fPIC -shared -o $@ libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c libstop.c libcont.c -lc
+suite.so: libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c libstop.c libcont.c libusr.c libint.c
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c libstop.c libcont.c libusr.c libint.c -lc
 
 alarm: libalarm.so
 
@@ -50,6 +50,17 @@ cont: libcont.so
 
 libcont.so: libcont.c
 	$(CC) $(CFLAGS) -fPIC -shared -o $@ libcont.c -lc
+
+usr: libusr.so
+
+libusr.so: libusr.c
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libusr.c -lc
+
+int: libint.so
+
+libint.so: libint.c
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libint.c -lc
+
 
 clean:
 	rm *.so 
