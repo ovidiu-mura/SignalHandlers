@@ -60,4 +60,5 @@ test_sigcont(void)
     kill(pid, SIGKILL);
     wait(NULL);
   }
+  return 0;
 }

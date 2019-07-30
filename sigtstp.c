@@ -97,4 +97,5 @@ test_sigtstp(void)
     kill(pid, SIGKILL);
     wait(NULL);
   }
+  return 0;
 }
