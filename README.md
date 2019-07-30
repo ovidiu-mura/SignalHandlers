@@ -8,7 +8,7 @@ Class group project for CS410/510 Advanced Linux Systems Programming aimed towar
 
 ### OR
 
-If you want to compile to a specific signal, you can do this
+If you want to target a specific signal, you can do this
 
 `make segv` : creates `libsegv.so` which you can use to link and call `test_sigsegv();`
 
