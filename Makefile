@@ -8,8 +8,8 @@ sep: $(BINS)
 
 suite: suite.so
 
-suite.so: libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c libstop.c libcont.c libusr.c libint.c
-	$(CC) $(CFLAGS) -fPIC -shared -o $@ libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c libstop.c libcont.c libusr.c libint.c -lc
+suite.so: libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c libstop.c libcont.c libusr.c libint.c libwinch.c
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c libstop.c libcont.c libusr.c libint.c libwinch.c -lc
 
 alarm: libalarm.so
 
@@ -61,6 +61,10 @@ int: libint.so
 libint.so: libint.c
 	$(CC) $(CFLAGS) -fPIC -shared -o $@ libint.c -lc
 
+winch: libwinch.so
+
+libwinch.so: libwinch.so
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libwinch.c -lc
 
 clean:
 	rm *.so 

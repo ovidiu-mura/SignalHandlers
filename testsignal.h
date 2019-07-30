@@ -31,4 +31,7 @@ int		test_userdefsignals(void);
 //SIGINT
 void	test_sigint(void);
 
+//SIGWINCH
+void	test_sigwinch(void);
+
 #endif
