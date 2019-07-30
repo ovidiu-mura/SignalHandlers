@@ -18,7 +18,7 @@ time_t t; // timer to measure the time between handler execution
 
 
 // ALARM Signal Handler
-void 
+void
 alarm_handler(int sig)
 {
   signal(SIGALRM, SIG_IGN);  // set the ALARM signal to be ignored
@@ -44,7 +44,7 @@ alarm_handler(int sig)
 }
 
 
-void 
+int
 test_sigalrm(void)
 {
   main_count = 0;
@@ -54,4 +54,8 @@ test_sigalrm(void)
     main_count++;
   }
   printf("------ done ------\n");
+  if(acount == 5)
+    return 0; // On Success return 0, test passed successfully.
+  else
+    return -1; // On Failure return -1, test failed.
 }
