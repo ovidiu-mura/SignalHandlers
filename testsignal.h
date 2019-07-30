@@ -2,7 +2,7 @@
 #define __TESTSIGNAL_H__
 
 //SIGALRM
-void	test_sigalrm(void);
+int	test_sigalrm(void);
 
 //SIGCHLD
 int 	test_sigchld(void);
