@@ -14,3 +14,7 @@ If you want to target a specific signal, you can do this
 
 
 There is a target for each signal. If you *really* want to, you can create seperate shared object files for each.
+
+You can also do :
+
+`make sep` : will create a `.so` for each signal

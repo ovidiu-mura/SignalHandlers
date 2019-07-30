@@ -19,4 +19,10 @@ int 	test_sigfpe(void);
 //SIGSEGV
 int	  test_sigsegv(void);
 
+//SIGCONT
+int		test_sigcont(void);
+
+//SIGSTOP
+int		test_sigtstp(void);
+
 #endif

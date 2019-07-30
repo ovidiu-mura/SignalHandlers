@@ -12,7 +12,7 @@
 
 
 void
-sigcont(int signo)
+sigcontt(int signo)
 {
   printf("SIGCONT received\n");
 }
@@ -28,7 +28,7 @@ test_sigcont(void)
   sigdelset(&sa.sa_mask, SIGTSTP);
   sigdelset(&sa.sa_mask, SIGCONT);
 
-  sa.sa_handler = &sigcont;
+  sa.sa_handler = &sigcontt;
   if ((pid = fork()) < 0) 
   {
     printf("Fork failure\n");
