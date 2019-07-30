@@ -34,4 +34,10 @@ void	test_sigint(void);
 //SIGWINCH
 void	test_sigwinch(void);
 
+//SIGTTIN
+void	test_sigttin(void);
+
+//SIGTTOU
+void	test_sigttou(void);
+
 #endif

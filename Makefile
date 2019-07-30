@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-g
-BINS=libalarm.so libchild.so libxfsz.so libfpe.so libpipe.so libsegv.so libstop.so libcont.so
+BINS=libalarm.so libchild.so libxfsz.so libfpe.so libpipe.so libsegv.so libstop.so libcont.so libusr.so libint.so libwinch.so libttin.so libttou.so
 
 all: suite
 
@@ -8,8 +8,8 @@ sep: $(BINS)
 
 suite: suite.so
 
-suite.so: libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c libstop.c libcont.c libusr.c libint.c libwinch.c
-	$(CC) $(CFLAGS) -fPIC -shared -o $@ libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c libstop.c libcont.c libusr.c libint.c libwinch.c -lc
+suite.so: libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c libstop.c libcont.c libusr.c libint.c libwinch.c libttin.c libttou.c
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c libstop.c libcont.c libusr.c libint.c libwinch.c libttin.c libttou.c -lc
 
 alarm: libalarm.so
 
@@ -63,8 +63,18 @@ libint.so: libint.c
 
 winch: libwinch.so
 
-libwinch.so: libwinch.so
+libwinch.so: libwinch.c
 	$(CC) $(CFLAGS) -fPIC -shared -o $@ libwinch.c -lc
+
+ttin: libttin.so
+
+libttin.so: libttin.c
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libttin.c -lc
+
+ttou: libttou.so
+
+libttou.so: libttou.c
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libttou.c -lc
 
 clean:
 	rm *.so 
