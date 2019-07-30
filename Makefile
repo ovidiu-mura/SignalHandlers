@@ -1,22 +1,43 @@
 CC=gcc
 CFLAGS=-Wall -g
-#BINS=signalsuite libalarm.so signals
-BINS=libalarm.so
+BINS=libalarm.so libchild.so libxfsz.so libfpe.so libpipe.so libsegv.so
 
+all: suite
 
-all: $(BINS)
+suite: suite.so
 
-libalarm.o: libalarm.c alarm.h
-	$(CC) $(CFLAGS) -c libalarm.c
+suite.so: libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libalarm.c libchild.c libxfsz.c libfpe.c libpipe.c libsegv.c -lc
 
-libalarm.so: libalarm.c alarm.h
+alarm: libalarm.so
+
+libalarm.so: libalarm.c
 	$(CC) $(CFLAGS) -fPIC -shared -o $@ libalarm.c -lc
 
-#signalsuite: signalsuite.c libalarm.o
-#	$(CC) $(CFLAGS) -o $@ $^
+child: libchild.so
 
-#signals: signalsuite.c
-#	$(CC) $(CFLAGS) -o $@ $^ -L. -lalarm
+libchild.so: libchild.c
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libchild.c -lc
+
+xfsz: libxfsz.so
+
+libxfsz.so:
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libxfsz.c -lc
+
+fpe: libfpe.so
+
+libfpe.so: libfpe.c
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libfpe.c -lc
+
+pipe: libpipe.so
+
+libpipe.so: libpipe.c
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libpipe.c -lc
+
+segv: libsegv.so
+
+libsegv.so: libsegv.c
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ libsegv.c -lc
 
 clean:
 	rm *.so 

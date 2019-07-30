@@ -9,7 +9,6 @@
 #include <time.h>
 #include <unistd.h>
 #include <string.h>
-#include "alarm.h"
 
 long main_count = 0; // counter to be incremented inside main method
 int acount = 0; // counter to be incremented inside alarm handler
@@ -46,7 +45,7 @@ alarm_handler(int sig)
 
 
 void 
-test_alarm(void)
+test_sigalrm(void)
 {
   main_count = 0;
   signal(SIGALRM, alarm_handler);
